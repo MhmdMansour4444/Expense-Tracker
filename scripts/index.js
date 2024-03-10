@@ -2,6 +2,8 @@ const balance = document.querySelector("#balance");
 const trans = document.querySelector("#trans");
 const amount = document.querySelector("#amount");
 const description = document.querySelector("#desc");
+const form = document.querySelector("#form");
+
 
 const localStorageTrans = JSON.parse(localStorage.getItem);
 let transactions = localStorage.getItem("trans") != null ? localStorage : [];
@@ -13,7 +15,6 @@ function updateLocalStorage() {
 function loadTransactionDetails(transaction) {
   const sign = transaction.amount < 0 ? "-" : "+";
   const item = document.createElement("li");
-
   item.classList.add(transaction < 0 ? "exp" : "inc");
   item.innerHTML = `
     ${transaction.description}
@@ -39,3 +40,28 @@ function removeTrans(id) {
     return;
   }
 }
+
+function addTransaction(e) {
+    e.preventDefault();
+
+    if(description.value.trim() == "" || amount.value.trim() == "" ) {
+        alert("Please enter description and amount of transaction!!")
+    }else {
+        const transaction = {
+            id: uniqueId,
+            description: description.value,
+            amount: +amount.value,
+        };
+    }
+}
+
+function uniqueId() {
+    return Math.floor(Math.random() * 100000);
+  }
+
+
+form.addEventListener("submit", addTransaction);
+
+window.addEventListener("load", function(){
+    config();
+})
