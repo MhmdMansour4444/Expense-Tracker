@@ -14,23 +14,23 @@ body {
 }
 
 .container {
-    width: 800px;
-    height: 750px;
-    background-color: #fff;
-    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
-    display: flex;
-    user-select: none;
+  width: 800px;
+  height: 750px;
+  background-color: #fff;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  display: flex;
+  user-select: none;
 }
 
 .ledger {
-  background-color: #2f3542;
+  background-color: rgb(30 30 90);
   padding: 20px;
   flex: 1;
   color: white;
 }
 .ledger h2 {
   text-transform: uppercase;
-  color: #feca57;
+  color: rgb(255 155 0);
 }
 .ledger h2,
 .ledger h4,
@@ -61,8 +61,8 @@ body {
   color: #1dd1a1;
 }
 .inc-exp-container div.exp {
-  border: 3px solid #ee5253;
-  color: #ee5253;
+  border: 3px solid #e50001;
+  color: #e50001;
 }
 
 #form {
@@ -92,7 +92,7 @@ input[type="number"] {
 }
 
 .btn {
-  background-color: #2e86de;
+  background-color: rgb(255 155 0);
   color: white;
   display: block;
   width: 100%;

@@ -82,6 +82,18 @@ function uniqueId() {
   return Math.floor(Math.random() * 100000);
 }
 
+fetch('https://rich-erin-angler-hem.cyclic.app/students/available')
+.then(response => response.json())
+.then(data => {
+  const selectElement = document.getElementById('currencies');
+  data.forEach(currency => {
+    const optionElement = document.createElement('option');
+    optionElement.value = currency.code;
+    optionElement.textContent = `${currency.name} (${currency.symbol})`;
+    selectElement.appendChild(optionElement);
+  });
+})
+.catch(error => console.error('Error fetching currencies:', error));
 
 form.addEventListener("submit", addTransaction);
 
