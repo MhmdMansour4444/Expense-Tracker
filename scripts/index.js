@@ -82,6 +82,7 @@ function uniqueId() {
   return Math.floor(Math.random() * 100000);
 }
 
+
 form.addEventListener("submit", addTransaction);
 
 window.addEventListener("load", function () {
