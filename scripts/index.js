@@ -13,6 +13,25 @@ function updateLocalStorage() {
   localStorage.setItem("trans", JSON.stringify(transactions));
 }
 
+function updateAmount() {
+  const amounts = transactions.map((transaction) => transaction.amount);
+  const total = amounts.reduce((acc, item) => (acc += item), 0).toFixed(2);
+  balance.innerHTML = `$ ${total}`;
+
+  const income = amounts
+    .filter((item) => item > 0)
+    .reduce((acc, item) => (acc += item), 0)
+    .toFixed(2);
+  income_amt.innerHTML = `$ ${income}`;
+  const expense = amounts
+    .filter((item) => item < 0)
+    .reduce((acc, item) => (acc += item), 0)
+    .toFixed(2);
+  expense_amt.innerHTML = `$ ${Math.abs(expense)}`;
+
+
+}
+
 function addTransaction(e) {
   e.preventDefault();
 
