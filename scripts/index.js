@@ -5,6 +5,7 @@ const description = document.querySelector("#desc");
 const form = document.querySelector("#form");
 const income_amt = document.querySelector("#inc-amt");
 const expense_amt = document.querySelector("#exp-amt");
+const toggleSwitch = document.querySelector(".switch input");
 
 const localStorageTrans = JSON.parse(localStorage.getItem("trans"));
 let transactions = localStorageTrans != null ? localStorageTrans : [];
@@ -82,18 +83,33 @@ function uniqueId() {
   return Math.floor(Math.random() * 100000);
 }
 
-fetch('https://rich-erin-angler-hem.cyclic.app/students/available')
-.then(response => response.json())
-.then(data => {
-  const selectElement = document.getElementById('currencies');
-  data.forEach(currency => {
-    const optionElement = document.createElement('option');
-    optionElement.value = currency.code;
-    optionElement.textContent = `${currency.name} (${currency.symbol})`;
-    selectElement.appendChild(optionElement);
-  });
-})
-.catch(error => console.error('Error fetching currencies:', error));
+function toggleTransactions() {
+    const transactionItems = trans.querySelectorAll("li");
+    transactionItems.forEach((item) => {
+      if (toggleSwitch.checked) {
+        item.style.display = item.classList.contains("exp") ? "flex" : "none";
+      } else {
+        item.style.display = item.classList.contains("inc") ? "flex" : "none";
+      }
+    });
+  }
+
+console.log("Toggle switch:", toggleSwitch);
+
+toggleSwitch.addEventListener("change", toggleTransactions);
+
+fetch("https://rich-erin-angler-hem.cyclic.app/students/available")
+  .then((response) => response.json())
+  .then((data) => {
+    const selectElement = document.getElementById("currencies");
+    data.forEach((currency) => {
+      const optionElement = document.createElement("option");
+      optionElement.value = currency.code;
+      optionElement.textContent = `${currency.name} (${currency.symbol})`;
+      selectElement.appendChild(optionElement);
+    });
+  })
+  .catch((error) => console.error("Error fetching currencies:", error));
 
 form.addEventListener("submit", addTransaction);
 

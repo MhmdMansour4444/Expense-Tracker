@@ -15,7 +15,7 @@ body {
 
 .container {
   width: 800px;
-  height: 750px;
+  height: 800px;
   background-color: #fff;
   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
   display: flex;
@@ -50,7 +50,7 @@ body {
   padding: 20px;
   font-size: 18px;
   flex: 1;
-  border-radius: 2px;
+  border-radius: 15px;
 }
 
 .inc-exp-container div p {
@@ -171,7 +171,7 @@ input[type="number"] {
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #2e86de;
+  background-color: rgb(255 155 0);
   border-radius: 8px;
 }
 
