@@ -6,6 +6,7 @@ const form = document.querySelector("#form");
 const income_amt = document.querySelector("#inc-amt");
 const expense_amt = document.querySelector("#exp-amt");
 const toggleSwitch = document.querySelector(".switch input");
+const showAllButton = document.querySelector('.showall-btn');
 
 const localStorageTrans = JSON.parse(localStorage.getItem("trans"));
 let transactions = localStorageTrans != null ? localStorageTrans : [];
@@ -82,6 +83,15 @@ function updateAmount() {
 function uniqueId() {
   return Math.floor(Math.random() * 100000);
 }
+
+function showAllTransactions() {
+  const transactionItems = trans.querySelectorAll('li');
+  transactionItems.forEach(item => {
+    item.style.display = 'flex';
+  });
+}
+
+showAllButton.addEventListener('click', showAllTransactions);
 
 function toggleTransactions() {
     const transactionItems = trans.querySelectorAll("li");
